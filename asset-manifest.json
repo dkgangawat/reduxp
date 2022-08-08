@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/reduxp/static/css/main.52c5155a.css",
+    "main.js": "/reduxp/static/js/main.8a4dd8e0.js",
+    "index.html": "/reduxp/index.html",
+    "main.52c5155a.css.map": "/reduxp/static/css/main.52c5155a.css.map",
+    "main.8a4dd8e0.js.map": "/reduxp/static/js/main.8a4dd8e0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.52c5155a.css",
+    "static/js/main.8a4dd8e0.js"
+  ]
+}
