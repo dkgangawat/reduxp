@@ -9,7 +9,7 @@ const App = () => {
     <Header/>
   <Router>
       <Routes>
-      <Route path="/" element={<ProductListing/>}/>
+      <Route path="/reduxp" element={<ProductListing/>}/>
       </Routes>
     </Router>
     </>
