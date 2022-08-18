@@ -17,10 +17,24 @@ import { useState } from 'react';
 export default function SearchAppBar() {
   const [disabled,setdisabled]=useState(false)
   const handleClick=()=>{
-    const search = document.getElementById("search");
+    const search = document.getElementById("searchBox");
+    const searchButton = document.getElementById("searchButton");
+    search.style.display="flex";
+    searchButton.style.display="none";
+    console.log(search)
+  }
+  const handleBlur=()=>{
+    if(window.innerWidth<=600){
+ const search = document.getElementById("searchBox");
+    const searchButton = document.getElementById("searchButton");
+    search.style.display="none";
+    searchButton.style.display="block";
+    console.log(search)
+    }
+   
   }
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box  sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{backgroundColor:"white", boxShadow:"0px 0.5px 4px gray",color:"black"}}>
         <Toolbar>
           <IconButton
@@ -39,15 +53,15 @@ export default function SearchAppBar() {
             sx={{ flexGrow: 1, display: "block" }}
           >Shop Now
           </Typography>
-          <Box sx={{display:"flex", bgcolor:"rgba(229, 223, 223, 0.374)", boxShadow:"0 1px #bbbb",}}>
+          <Box id="searchBox" onBlur={handleBlur} sx={{display:"flex", bgcolor:"rgba(229, 223, 223, 0.374)", boxShadow:"0 1px #bbbb", display:{xs:"none",sm:"block"}}}>
             <InputBase id="search" disabled={disabled} placeholder='Search...' sx={{
-            display:{xs:"none",sm:"block"},
-            width:"250px",
+            width:{xs:"80%",sm:"250px"},
             paddingLeft:"4px",mr:"4px"}}/>
-          <IconButton sx={{borderRadius:"0px"}} onClick={handleClick}>{<SearchIcon />}</IconButton>
+          <IconButton sx={{borderRadius:"0px"}}>{<SearchIcon />}</IconButton>
           </Box>
           
           <Stack direction="row" gap="2">
+          <IconButton id='searchButton' sx={{borderRadius:"0px" ,display:{xs:"block",sm:"none"}}}  onClick={handleClick}>{<SearchIcon />}</IconButton>
              <IconButton>{<ShoppingCartIcon />}</IconButton>
           <IconButton>
           <Avatar
