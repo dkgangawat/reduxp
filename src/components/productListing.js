@@ -4,6 +4,7 @@ import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import Card from "./card"
 import { SetProduct } from './../state/action/productAction';
+import { Container } from "@mui/system"
 
 
 const ProductListing = () => {
@@ -20,10 +21,9 @@ useEffect(()=>{
 });
   return (
     <>
-    <div className="container">
-        <Card/> 
-    </div>
- 
+    <Container sx={{display:"flex",flexWrap:"wrap"}}>
+       <Card/> 
+    </Container>
     </>
   )
 }
