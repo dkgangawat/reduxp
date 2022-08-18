@@ -5,6 +5,7 @@ import { Button, CardActionArea, CardActions, Icon, Link } from '@mui/material';
 import { useSelector } from 'react-redux'
 const MCard = () => {
     const products = useSelector((state)=>state.allproducts.products);
+    console.log(products);
     const renderProductList = products.map((product)=>{
         const {id,title,image,price,category} = product;
         return(  
