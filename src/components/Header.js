@@ -11,9 +11,14 @@ import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Avatar from '@mui/material/Avatar';
 import { Stack } from '@mui/system';
+import { useState } from 'react';
 
 
 export default function SearchAppBar() {
+  const [disabled,setdisabled]=useState(false)
+  const handleClick=()=>{
+    const search = document.getElementById("search");
+  }
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{backgroundColor:"white", boxShadow:"0px 0.5px 4px gray",color:"black"}}>
@@ -34,10 +39,14 @@ export default function SearchAppBar() {
             sx={{ flexGrow: 1, display: "block" }}
           >Shop Now
           </Typography>
-          <InputBase placeholder='Search...' sx={{
+          <Box sx={{display:"flex", bgcolor:"rgba(229, 223, 223, 0.374)", boxShadow:"0 1px #bbbb",}}>
+            <InputBase id="search" disabled={disabled} placeholder='Search...' sx={{
             display:{xs:"none",sm:"block"},
-            border:"1px solid #bbbb",borderRadius:"10px", paddingLeft:"4px",mr:"4px"}}>dfras</InputBase>
-          <IconButton sx={{display:{xs:"block",sm:"none"}}}>{<SearchIcon/>}</IconButton>
+            width:"250px",
+            paddingLeft:"4px",mr:"4px"}}/>
+          <IconButton sx={{borderRadius:"0px"}} onClick={handleClick}>{<SearchIcon />}</IconButton>
+          </Box>
+          
           <Stack direction="row" gap="2">
              <IconButton>{<ShoppingCartIcon />}</IconButton>
           <IconButton>
