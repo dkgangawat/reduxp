@@ -12,7 +12,15 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Avatar from '@mui/material/Avatar';
 import { Stack } from '@mui/system';
 import { useState } from 'react';
-
+import Badge from '@mui/material/Badge';
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 4px',
+  },
+}));
 
 export default function SearchAppBar() {
   const [disabled,setdisabled]=useState(false)
@@ -62,7 +70,11 @@ export default function SearchAppBar() {
           
           <Stack direction="row" gap="2">
           <IconButton id='searchButton' sx={{borderRadius:"0px" ,display:{xs:"block",sm:"none"}}}  onClick={handleClick}>{<SearchIcon />}</IconButton>
-             <IconButton>{<ShoppingCartIcon />}</IconButton>
+             <IconButton>
+             <StyledBadge badgeContent={4} color="secondary">
+            <ShoppingCartIcon />
+             </StyledBadge>
+             </IconButton>
           <IconButton>
           <Avatar
         src="/broken-image.jpg"

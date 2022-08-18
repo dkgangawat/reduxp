@@ -6,7 +6,6 @@ import Card from "./card"
 import { SetProduct } from './../state/action/productAction';
 import { Container } from "@mui/system"
 
-
 const ProductListing = () => {
   const dispatch = useDispatch()
   const fetchData= async()=>{
@@ -19,6 +18,7 @@ const ProductListing = () => {
 useEffect(()=>{
   fetchData();
 });
+
   return (
     <>
     <Container sx={{display:"flex",flexWrap:"wrap"}}>

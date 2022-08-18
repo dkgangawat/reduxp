@@ -3,14 +3,16 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import { Button, CardActionArea, CardActions, Icon, Link } from '@mui/material';
 import { useSelector } from 'react-redux'
-const MCard = () => {
+import Loading from './loading';
+import { useEffect } from 'react';
+const Mcard = () => {
     const products = useSelector((state)=>state.allproducts.products);
-    console.log(products);
     const renderProductList = products.map((product)=>{
         const {id,title,image,price,category} = product;
+      
         return(  
           <>
-          <Card id={id} sx={{ height:"auto" , width:{xs:"40%",sm:"22%",md:"18%"} ,maxWidth: 320 ,display:"inline-block",margin:"16px auto",objectFit:"fill" ,padding:"5px 0",
+          <Card key={id} sx={{ height:"auto" , width:{xs:"40%",sm:"22%",md:"18%"} ,maxWidth: 320 ,display:"inline-block",margin:"16px auto",objectFit:"fill" ,padding:"5px 0",
                       borderRadius:"12px",
                       boxShadow:"0px 2px 8px gray",
                       "&:hover":{
@@ -48,4 +50,4 @@ const MCard = () => {
   )
 }
 
-export default MCard
+export default Mcard
