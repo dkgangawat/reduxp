@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled, alpha } from '@mui/material/styles';
+import { styled} from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,8 +11,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Avatar from '@mui/material/Avatar';
 import { Stack } from '@mui/system';
-import { useState } from 'react';
 import Badge from '@mui/material/Badge';
+import { useSelector } from 'react-redux';
+import {Link} from "react-router-dom"
+
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
     right: -3,
@@ -22,8 +24,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-export default function SearchAppBar() {
-  const [disabled,setdisabled]=useState(false)
+export default function  SearchAppBar () {
   const handleClick=()=>{
     const search = document.getElementById("searchBox");
     const searchButton = document.getElementById("searchButton");
@@ -37,10 +38,10 @@ export default function SearchAppBar() {
     const searchButton = document.getElementById("searchButton");
     search.style.display="none";
     searchButton.style.display="block";
-    console.log(search)
     }
    
   }
+   const CartItems = useSelector((state)=>state.HandleCart.length);
   return (
     <Box  sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{backgroundColor:"white", boxShadow:"0px 0.5px 4px gray",color:"black"}}>
@@ -61,8 +62,8 @@ export default function SearchAppBar() {
             sx={{ flexGrow: 1, display: "block" }}
           >Shop Now
           </Typography>
-          <Box id="searchBox" onBlur={handleBlur} sx={{display:"flex", bgcolor:"rgba(229, 223, 223, 0.374)", boxShadow:"0 1px #bbbb", display:{xs:"none",sm:"block"}}}>
-            <InputBase id="search" disabled={disabled} placeholder='Search...' sx={{
+          <Box id="searchBox" onBlur={handleBlur} sx={{ bgcolor:"rgba(229, 223, 223, 0.374)", boxShadow:"0 1px #bbbb", display:{xs:"none",sm:"block"}}}>
+            <InputBase id="search" placeholder='Search...' sx={{
             width:{xs:"80%",sm:"250px"},
             paddingLeft:"4px",mr:"4px"}}/>
           <IconButton sx={{borderRadius:"0px"}}>{<SearchIcon />}</IconButton>
@@ -70,10 +71,13 @@ export default function SearchAppBar() {
           
           <Stack direction="row" gap="2">
           <IconButton id='searchButton' sx={{borderRadius:"0px" ,display:{xs:"block",sm:"none"}}}  onClick={handleClick}>{<SearchIcon />}</IconButton>
-             <IconButton>
-             <StyledBadge badgeContent={4} color="secondary">
+                <IconButton >
+              <Link to="/reduxp/cart">
+            
+             <StyledBadge badgeContent={CartItems} color="secondary">
             <ShoppingCartIcon />
              </StyledBadge>
+             </Link>
              </IconButton>
           <IconButton>
           <Avatar

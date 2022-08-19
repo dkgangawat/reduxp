@@ -1,19 +1,27 @@
 import React from 'react'
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
-import { Button, CardActionArea, CardActions, Icon, Link } from '@mui/material';
+import { Button, CardActionArea, Typography } from '@mui/material';
 import { useSelector } from 'react-redux'
-import Loading from './loading';
-import { useEffect } from 'react';
+import { useContext } from 'react';
+import { useDispatch } from 'react-redux/es/exports';
+import { AddToCart } from '../state/action/productAction';
+import { appcontext } from '../context/appContext';
 const Mcard = () => {
+  const dispatch = useDispatch();
+  const a = useContext(appcontext);
     const products = useSelector((state)=>state.allproducts.products);
-    const renderProductList = products.map((product)=>{
+    const addtocart=(event)=>{
+      dispatch(AddToCart(products[event.currentTarget.id-1]));
+     }
+     const details =(event)=>{
+      a.updateClickedCrd(event.currentTarget.id -1)
+     }
+    const renderProductList = products.map((product,index)=>{
         const {id,title,image,price,category} = product;
-      
         return(  
           <>
-          <Card key={id} sx={{ height:"auto" , width:{xs:"40%",sm:"22%",md:"18%"} ,maxWidth: 320 ,display:"inline-block",margin:"16px auto",objectFit:"fill" ,padding:"5px 0",
-                      borderRadius:"12px",
+          <Card key={index} id={id+1} sx={{ height:"auto" , width:{xs:"40%",sm:"22%",md:"18%"} ,maxWidth: 320 ,display:"inline-block",margin:"16px auto",objectFit:"fill" ,
                       boxShadow:"0px 2px 8px gray",
                       "&:hover":{
                         position:"relative",
@@ -23,25 +31,25 @@ const Mcard = () => {
                         boxShadow:"-2px -2px 8px gray",
                        }
                        
-                       }}>
-               <CardActionArea href='https://google.com'>
-                 <div>
+                       }} onClick={details}>
+               <CardActionArea>
                     <CardMedia
                    component="img"
-                   height="250"
-
                    image={image}
                    alt="green iguana"
-                   sx={{objectFit:"contain",padding:"10px"}}
+                   sx={{objectFit:"contain",padding:"5px",height:"100px"}}
                  />  
-                 </div>
-                 <Button variant='contained' color='secondary' sx={{fontSize:"min(calc(0.8vw + 0.4rem),1rem)",width:"90%",textTransform:"capitalize",margin:"auto",display:"block"}}>{`You can save ${price}`}</Button>   
+                 <Typography component="h5" sx={{fontSize:"0.9rem",margin :"5px",fontWeight:"bold"}} >
+                   {title}<br/>
+                   {`${price} $`}<br/>
+                   {category}
+                 </Typography>
+                 <Button id={id} variant='contained' sx={{bgcolor:"rgba(25, 25, 115)",fontSize:"16px",margin:"10px",textTransform:"capitalize"}} onClick={addtocart}>Add to cart</Button>
                </CardActionArea>
              </Card>
              </>
             )
     })
-    console.log(renderProductList)
   return (
     <>
         {renderProductList}

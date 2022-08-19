@@ -3,8 +3,8 @@ import axios from "axios"
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import Card from "./card"
-import { SetProduct } from './../state/action/productAction';
-import { Container } from "@mui/system"
+import { SetProduct  } from './../state/action/productAction';
+import { Container } from "@mui/system";
 
 const ProductListing = () => {
   const dispatch = useDispatch()
@@ -13,8 +13,7 @@ const ProductListing = () => {
         console.log("err",err);
     })
     dispatch(SetProduct(responce.data))
-    console.log(responce)
-}
+} 
 useEffect(()=>{
   fetchData();
 });
