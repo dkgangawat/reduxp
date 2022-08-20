@@ -7,6 +7,7 @@ import { useContext } from 'react';
 import { useDispatch } from 'react-redux/es/exports';
 import { AddToCart } from '../state/action/productAction';
 import { appcontext } from '../context/appContext';
+import {Link} from "react-router-dom"
 var clickedItem =0;
 const Mcard = () => {
   const dispatch = useDispatch();
@@ -14,16 +15,14 @@ const Mcard = () => {
     const products = useSelector((state)=>state.allproducts.products);
     const addtocart=(event)=>{
       dispatch(AddToCart(products[event.currentTarget.id-1]));
-      clickedItem = event.currentTarget.id
      }
      const details =(event)=>{
-      a.updateClickedCrd(event.currentTarget.id -1)
+      clickedItem = event.currentTarget.id
      }
     const renderProductList = products.map((product,index)=>{
         const {id,title,image,price,category} = product;
         return(  
-          <>
-          <Card key={index} id={id+1} sx={{ height:"auto" , width:{xs:"40%",sm:"22%",md:"18%"} ,maxWidth: 320 ,display:"inline-block",margin:"16px auto",objectFit:"fill" ,
+          <Card key={index} id={index} sx={{ height:"auto" , width:{xs:"40%",sm:"22%",md:"18%"} ,maxWidth: 320 ,display:"inline-block",margin:"16px auto",objectFit:"fill" ,
                       boxShadow:"0px 2px 8px gray",
                       "&:hover":{
                         position:"relative",
@@ -34,6 +33,8 @@ const Mcard = () => {
                        }
                        
                        }} onClick={details}>
+                        <Link to="/reduxp/cart/productdetail" style={{textDecoration:"none",display:"inline" ,color:"inherit"}}>
+                      
                <CardActionArea>
                     <CardMedia
                    component="img"
@@ -46,10 +47,10 @@ const Mcard = () => {
                    {`${price} $`}<br/>
                    {category}
                  </Typography>
-                 <Button id={id} variant='contained' sx={{bgcolor:"rgba(25, 25, 115)",fontSize:"16px",margin:"10px",textTransform:"capitalize"}} onClick={addtocart}>Add to cart</Button>
                </CardActionArea>
+               </Link>
+                 <Button id={id} variant='contained' sx={{bgcolor:"rgba(25, 25, 115)",fontSize:"16px",margin:"10px",textTransform:"capitalize"}} onClick={addtocart}>Add to cart</Button>
              </Card>
-             </>
             )
     })
   return (

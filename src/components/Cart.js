@@ -16,7 +16,6 @@ const Cart = () => {
          <CardActionArea sx={{margin:'12px',padding:"5px",width:{xs:"100%",sm:"auto"}}}>
         <Typography variant='h6' sx={{fontWeight:"bold"}}>{title}</Typography>
         <Typography  sx={{fontWeight:"bold",color:"green"}}> ${price}</Typography>
-        {/* <Typography >{description}</Typography> */}
         <Typography  sx={{fontWeight:"bold"}}>{category}</Typography>
         <Button id={id} variant='contained'>remove From Cart</Button>
          </CardActionArea>
