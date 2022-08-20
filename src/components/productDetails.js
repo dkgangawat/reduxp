@@ -1,8 +1,6 @@
-import React, { useContext } from 'react'
-import { Box, Button, Card, CardActionArea, CardMedia, Typography } from '@mui/material';
-import { Container, flexbox, padding } from '@mui/system';
+import React from 'react'
+import {  Button, Card, CardActionArea, CardMedia, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
-import {appcontext} from '../context/appContext';
 import { clickedItem } from './card';
 import { useDispatch } from 'react-redux/es/exports';
 import { AddToCart } from '../state/action/productAction';
@@ -14,8 +12,7 @@ const ProductDetails = () => {
     dispatch(AddToCart(products[clickedItem]));
   }
   console.log(clickedItem);
-  const a =useContext(appcontext)
-    const {id,title,image,price,category,description} = products[clickedItem];
+    const {title,image,price,category,description} = products[clickedItem];
   return (
     <>
       

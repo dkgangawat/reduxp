@@ -3,15 +3,12 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import { Button, CardActionArea, Typography } from '@mui/material';
 import { useSelector } from 'react-redux'
-import { useContext } from 'react';
 import { useDispatch } from 'react-redux/es/exports';
 import { AddToCart } from '../state/action/productAction';
-import { appcontext } from '../context/appContext';
 import {Link} from "react-router-dom"
 var clickedItem =0;
 const Mcard = () => {
   const dispatch = useDispatch();
-  const a = useContext(appcontext);
     const products = useSelector((state)=>state.allproducts.products);
     const addtocart=(event)=>{
       dispatch(AddToCart(products[event.currentTarget.id-1]));
