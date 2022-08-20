@@ -3,10 +3,12 @@ import { Box, Button, Card, CardActionArea, CardMedia, Typography } from '@mui/m
 import { Container, flexbox, padding } from '@mui/system';
 import { useSelector } from 'react-redux';
 import {appcontext} from '../context/appContext';
+import { clickedItem } from './card';
 const ProductDetails = () => {
+  console.log(clickedItem);
   const a =useContext(appcontext)
-    const producDetail = useSelector((state)=>state.HandleCart[a.state.ClickedCard-1]);
-    const {id,title,image,price,category,description} = producDetail;
+  const products = useSelector((state)=>state.allproducts.products);
+    const {id,title,image,price,category,description} = products[clickedItem-1];
   return (
     <>
       <Card  sx={{ display:"flex",width:"80%", margin:"16px auto", padding:"8px",flexWrap:"wrap"}}>

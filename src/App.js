@@ -18,7 +18,9 @@ const App = () => {
       <Route path='/reduxp/cart/productdetail' element={<ProductDetails/>}/>
       </Routes>  
     </AppContext>
-    
+    <li>
+      <Link to="/reduxp/cart/productdetail">details</Link>
+    </li>
     </>
   )
 }

@@ -7,12 +7,14 @@ import { useContext } from 'react';
 import { useDispatch } from 'react-redux/es/exports';
 import { AddToCart } from '../state/action/productAction';
 import { appcontext } from '../context/appContext';
+var clickedItem =0;
 const Mcard = () => {
   const dispatch = useDispatch();
   const a = useContext(appcontext);
     const products = useSelector((state)=>state.allproducts.products);
     const addtocart=(event)=>{
       dispatch(AddToCart(products[event.currentTarget.id-1]));
+      clickedItem = event.currentTarget.id
      }
      const details =(event)=>{
       a.updateClickedCrd(event.currentTarget.id -1)
@@ -59,3 +61,4 @@ const Mcard = () => {
 }
 
 export default Mcard
+export {clickedItem}
