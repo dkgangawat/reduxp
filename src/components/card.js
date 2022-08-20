@@ -32,7 +32,7 @@ const Mcard = () => {
                        }} onClick={details}>
                         <Link to="/reduxp/cart/productdetail" style={{textDecoration:"none",display:"inline" ,color:"inherit"}}>
                       
-               <CardActionArea>
+               <Typography>
                     <CardMedia
                    component="img"
                    image={image}
@@ -44,7 +44,7 @@ const Mcard = () => {
                    {`${price} $`}<br/>
                    {category}
                  </Typography>
-               </CardActionArea>
+               </Typography>
                </Link>
                  <Button id={id} variant='contained' sx={{bgcolor:"rgba(25, 25, 115)",fontSize:"16px",margin:"10px",textTransform:"capitalize"}} onClick={addtocart}>Add to cart</Button>
              </Card>

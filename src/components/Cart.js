@@ -18,12 +18,12 @@ const Cart = () => {
         <CardMedia component="img" 
         image={image}
          sx={{width:{xs:"100%",sm:"150px"},height:"200px",display:"inline-block",objectFit:"contain"}}/>
-         <CardActionArea sx={{margin:'12px',padding:"5px",width:{xs:"100%",sm:"auto"}}}>
+         <Typography sx={{margin:'12px',padding:"5px",width:{xs:"100%",sm:"auto"}}}>
         <Typography variant='h6' sx={{fontWeight:"bold"}}>{title}</Typography>
         <Typography  sx={{fontWeight:"bold",color:"green"}}> ${price}</Typography>
         <Typography  sx={{fontWeight:"bold"}}>{category}</Typography>
-        <Button id={id} variant='contained' onClick={removeItem}>remove From Cart</Button>
-         </CardActionArea>
+         <Button id={id} variant='contained' onClick={removeItem}>remove From Cart</Button>
+         </Typography>
       </Card>
       )
       
