@@ -1,9 +1,14 @@
 import { Box, Button, Card, CardActionArea, CardMedia, Typography } from '@mui/material';
 import { Container} from '@mui/system';
 import React from 'react'
-import { useSelector } from 'react-redux';
+import { useSelector ,useDispatch } from 'react-redux';
+import { RemoveFromCart } from '../state/action/productAction';
 const Cart = () => {
     const cartItems = useSelector((state)=>state.HandleCart);
+    const dispatch = useDispatch();
+    const removeItem =(event)=>{
+      dispatch(RemoveFromCart(event.currentTarget.id));
+    }
     var total=0;
     const renderCartItem = cartItems.map((curr,index)=>{
       const {id,title,image,price,category} = curr;
@@ -17,7 +22,7 @@ const Cart = () => {
         <Typography variant='h6' sx={{fontWeight:"bold"}}>{title}</Typography>
         <Typography  sx={{fontWeight:"bold",color:"green"}}> ${price}</Typography>
         <Typography  sx={{fontWeight:"bold"}}>{category}</Typography>
-        <Button id={id} variant='contained'>remove From Cart</Button>
+        <Button id={id} variant='contained' onClick={removeItem}>remove From Cart</Button>
          </CardActionArea>
       </Card>
       )
