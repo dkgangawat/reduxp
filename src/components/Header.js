@@ -14,7 +14,7 @@ import { Stack } from '@mui/system';
 import Badge from '@mui/material/Badge';
 import { useSelector } from 'react-redux';
 import {Link} from "react-router-dom"
-
+import { TotalItems } from '../state/reducer/AddTOCartReducer';
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
     right: -3,
@@ -30,7 +30,6 @@ export default function  SearchAppBar () {
     const searchButton = document.getElementById("searchButton");
     search.style.display="flex";
     searchButton.style.display="none";
-    console.log(search)
   }
   const handleBlur=()=>{
     if(window.innerWidth<=600){

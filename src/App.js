@@ -8,11 +8,11 @@ import ProductDetails from './components/productDetails';
 const App = () => {
   return (
     <>
-     <Header/>
+      <Header/>
       <Routes>
       <Route path="/reduxp/" element={<ProductListing/>}/>
       <Route path="/reduxp/cart" element={<Cart/>}/>
-      <Route path='/reduxp/cart/productdetail' element={<ProductDetails/>}/>
+      <Route path='/reduxp/cart/productdetail/:productId' element={<ProductDetails/>}/>
       </Routes>  
  
     </>
