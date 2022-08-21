@@ -1,13 +1,14 @@
 import React from 'react'
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
-import { Button, Typography } from '@mui/material';
+import { Button, IconButton, Typography } from '@mui/material';
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux/es/exports';
 import { AddToCart } from '../state/action/productAction';
-import {Link} from "react-router-dom"
+import {NavLink} from "react-router-dom"
 import { RemoveFromCart } from '../state/action/productAction';
 import { ispresent } from '../state/reducer/AddTOCartReducer';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 var clickedItem =0;
 const Mcard = () => {
   const dispatch = useDispatch();
@@ -29,9 +30,11 @@ const Mcard = () => {
     const renderProductList = products.map((product,index)=>{
         const {id,title,image,price,category} = product;
         return(  
-          <Card key={index} id={index} sx={{ height:"auto" , width:{xs:"40%",sm:"22%",md:"18%"} ,maxWidth: 320 ,display:"inline-block",margin:"16px auto",objectFit:"fill" ,
-                      boxShadow:"0px 1px 45px gray",
+          <Card key={index} id={index} sx={{ height:"auto" , width:{xs:"50%",sm:"22%",md:"18%"} ,maxWidth: 320 ,display:"inline-block",margin:{sx:"none",sm:"16px auto"},objectFit:"fill" ,
+                      boxShadow:{sx:"none",sm:"0px 1px 45px gray"},
                       transition:"all 0.3s ease",
+                      borderRadius:"0px",
+                      border:"1px solid #bbbb",
                       "&:hover":{
                         position:"relative",
                         transform:{sx:"scale(1)",sm:"scale(1.1)"},
@@ -40,7 +43,7 @@ const Mcard = () => {
                        }
                        
                        }} onClick={details}>
-                        <Link to={`/reduxp/cart/productdetail/${id}`} style={{textDecoration:"none",display:"inline" ,color:"inherit"}}>
+                        <NavLink to={`/reduxp/cart/productdetail/${id}`} style={{textDecoration:"none",display:"inline" ,color:"inherit"}}>
                       
                <Typography>
                     <CardMedia
@@ -49,14 +52,14 @@ const Mcard = () => {
                    alt="green iguana"
                    sx={{objectFit:"contain",padding:"5px",height:"100px"}}
                  />  
-                 <Typography component="h5" sx={{fontSize:"0.9rem",margin :"5px",fontWeight:"bold"}} >
+                 <Typography component="h5" sx={{fontSize:"0.9rem",margin :"5px",fontWeight:"bold",textAlign:'center'}} >
                    {title}<br/>
                    {`${price} $`}<br/>
                    {category}
                  </Typography>
                </Typography>
-               </Link>
-                 <Button id={id} variant='contained' sx={{bgcolor:"rgba(25, 25, 115)",fontSize:"16px",margin:"10px",textTransform:"capitalize"}} onClick={addtocart}>{ispresent(id)?"remove from cart":"add to cart"}</Button>
+               </NavLink>
+                 <IconButton id={id} variant='contained' sx={{fontSize:"16px",margin:"10px",textTransform:"capitalize"}} onClick={addtocart}>{ispresent(id)?"remove from cart":<AddShoppingCartIcon/>}</IconButton>
              </Card>
             )
     })

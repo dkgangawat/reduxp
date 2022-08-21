@@ -40,8 +40,7 @@ useEffect(()=>{
     const {title,image,price,category,description} = responce;
   return (
     <>
-      {    console.log(responce)}
-      <Card  sx={{ display:"flex",width:"80%", margin:"16px auto", padding:"8px",flexWrap:"wrap",boxShadow:"0 0 0 gray"}}>
+      {(responce.id==undefined)?"loading":<Card  sx={{ display:"flex",width:"80%", margin:"16px auto", padding:"8px",flexWrap:"wrap",boxShadow:"0 0 0 gray"}}>
         <CardMedia component="img" 
         image={image}
          sx={{width:{xs:"100%",sm:"150px"},height:"200px",display:"inline-block",objectFit:"contain"}}/>
@@ -55,7 +54,8 @@ useEffect(()=>{
           <Button variant='contained' sx={{width:{xs:"100%",sm:"40%"},display:"block",margin:"16px auto",bgcolor:"orange",'&:hover':{
             bgcolor:"orangered"
           }}}><Link to="/reduxp/cart" style={{textDecoration:"none",color:"inherit"}}>go to Cart</Link></Button>
-      </Card>
+      </Card>}
+      
     </>
   )
 }

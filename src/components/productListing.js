@@ -20,7 +20,8 @@ useEffect(()=>{
 
   return (
     <>
-    <Container sx={{display:"flex",flexWrap:"wrap"}}>
+    <Container sx={{display:"flex",flexWrap:"wrap",marginTop:"16px"}}>
+      <h2 style={{padding:'8px', display:"block",width:"100%"}}>Add you some items to cart</h2>
        <Card/> 
     </Container>
     </>
