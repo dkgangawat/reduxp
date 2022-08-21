@@ -21,7 +21,7 @@ useEffect(()=>{
   return (
     <>
     <Container sx={{display:"flex",flexWrap:"wrap",marginTop:"16px"}}>
-      <h2 style={{padding:'8px', display:"block",width:"100%"}}>Add you some items to cart</h2>
+      <h3 style={{paddingBottom:'8px', display:"block",width:"100%"}}>Add some items to cart</h3>
        <Card/> 
     </Container>
     </>

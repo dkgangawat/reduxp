@@ -52,7 +52,7 @@ const Mcard = () => {
                    alt="green iguana"
                    sx={{objectFit:"contain",padding:"5px",height:"100px"}}
                  />  
-                 <Typography component="h5" sx={{fontSize:"0.9rem",margin :"5px",fontWeight:"bold",textAlign:'center'}} >
+                 <Typography component="h5" sx={{fontSize:"0.9rem",margin :"5px",textAlign:'center'}} >
                    {title}<br/>
                    {`${price} $`}<br/>
                    {category}
