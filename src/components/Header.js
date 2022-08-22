@@ -41,7 +41,7 @@ export default function  SearchAppBar () {
   }
    const CartItems = useSelector((state)=>state.HandleCart.length);
   return (
-    <Box  sx={{ flexGrow: 1 }}>
+    <Box  sx={{ flexGrow: 1 }} >
       <AppBar position="static" sx={{backgroundColor:"white", boxShadow:"0px 0.5px 4px gray",color:"black"}}>
         <Toolbar>
           <IconButton
