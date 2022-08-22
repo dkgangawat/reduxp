@@ -1,6 +1,6 @@
 {
-  "name": "reduxp",
-  "homepage": "http://dkgangawat.github.io/reduxp",
+  "name": "shoppingCart",
+  "homepage": "http://dkgangawat.github.io/shoppingCart",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
