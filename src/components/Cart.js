@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardActionArea, CardMedia, Typography } from '@mui/material';
+import { Box, Button, Card, CardMedia, Typography } from '@mui/material';
 import { Container} from '@mui/system';
 import React from 'react'
 import { useSelector ,useDispatch } from 'react-redux';

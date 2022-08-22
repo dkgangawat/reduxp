@@ -1,15 +1,13 @@
 import React from 'react'
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
-import { Button, IconButton, Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux/es/exports';
 import { AddToCart } from '../state/action/productAction';
 import {NavLink} from "react-router-dom"
 import { RemoveFromCart } from '../state/action/productAction';
 import { ispresent } from '../state/reducer/AddTOCartReducer';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { green } from '@mui/material/colors';
 var clickedItem =0;
 const Mcard = () => {
   const dispatch = useDispatch();

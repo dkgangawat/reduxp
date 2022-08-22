@@ -12,7 +12,7 @@ const AddTOCartReducer = (state = CartArray,{type,payload}) => {
   if(type===ActionType.REMOVE_FROM_CART){
    
     const newstate = state.filter((curr)=>{
-      if(curr.id!=payload){
+      if(parseInt(curr.id)!==parseInt(payload)){
         return curr;
       }
       return null
@@ -30,7 +30,7 @@ const AddTOCartReducer = (state = CartArray,{type,payload}) => {
 
 const ispresent=(item) =>{
   return CartArray.find((element)=>{
-  if(element.id==item){
+  if(parseInt(element.id)===parseInt(item)){
     return true;
   }else{return false}
 })

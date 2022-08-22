@@ -14,7 +14,6 @@ import { Stack } from '@mui/system';
 import Badge from '@mui/material/Badge';
 import { useSelector } from 'react-redux';
 import {Link} from "react-router-dom"
-import { TotalItems } from '../state/reducer/AddTOCartReducer';
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
     right: -3,

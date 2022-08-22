@@ -1,17 +1,15 @@
 import React from 'react'
 import {  Button, Card, CardActionArea, CardMedia, Typography } from '@mui/material';
-import { useSelector } from 'react-redux';
-import { clickedItem } from './card';
 import { useDispatch } from 'react-redux/es/exports';
 import { AddToCart } from '../state/action/productAction';
-import {Link} from "react-router-dom"
+import {NavLink} from "react-router-dom"
 import { RemoveFromCart } from '../state/action/productAction'; 
 import { ispresent } from '../state/reducer/AddTOCartReducer';
 import { useParams } from 'react-router-dom';
 import  axios  from 'axios';
 import { useEffect } from 'react';
-import { LocalGasStation } from '@mui/icons-material';
 import { useState } from 'react';
+
 const ProductDetails = () => {
   const [responce ,setResponce]=useState({})
   const {productId} = useParams();
@@ -40,7 +38,7 @@ useEffect(()=>{
     const {title,image,price,category,description} = responce;
   return (
     <>
-      {(responce.id==undefined)?"loading":<Card  sx={{ display:"flex",width:"80%", margin:"16px auto", padding:"8px",flexWrap:"wrap",boxShadow:"0 0 0 gray"}}>
+      {(responce.id===undefined)?"loading":<Card  sx={{ display:"flex",width:"80%", margin:"16px auto", padding:"8px",flexWrap:"wrap",boxShadow:"0 0 0 gray"}}>
         <CardMedia component="img" 
         image={image}
          sx={{width:{xs:"100%",sm:"150px"},height:"200px",display:"inline-block",objectFit:"contain"}}/>
@@ -51,9 +49,9 @@ useEffect(()=>{
         <Typography  sx={{fontWeight:"bold"}}>{category}</Typography>
          </CardActionArea>
           <Button id={parseInt(productId)} variant='contained' sx={{width:{xs:"100%",sm:"40%"},display:"block",margin:" 16px auto"}} onClick={addtocart}>{ispresent(productId)?"remove from cart":"add to cart"}</Button>
-          <Button variant='contained' sx={{width:{xs:"100%",sm:"40%"},display:"block",margin:"16px auto",bgcolor:"orange",'&:hover':{
+          <Button variant='contained' component={NavLink} to="/reduxp/cart" sx={{width:{xs:"100%",sm:"40%"},display:"block",margin:"16px auto",bgcolor:"orange",textAlign:"center",'&:hover':{
             bgcolor:"orangered"
-          }}}><Link to="/reduxp/cart" style={{textDecoration:"none",color:"inherit"}}>go to Cart</Link></Button>
+          }}}>go to Cart</Button>
       </Card>}
       
     </>
