@@ -1,6 +1,6 @@
 {
-  "name": "shoppingCart",
-  "homepage": "http://dkgangawat.github.io/shoppingCart",
+  "name": "shoppingcart",
+  "homepage": "http://dkgangawat.github.io/shoppingcart",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

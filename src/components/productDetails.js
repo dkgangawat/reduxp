@@ -49,7 +49,7 @@ useEffect(()=>{
         <Typography  sx={{fontWeight:"bold"}}>{category}</Typography>
          </CardActionArea>
           <Button id={parseInt(productId)} variant='contained' sx={{width:{xs:"100%",sm:"40%"},display:"block",margin:" 16px auto"}} onClick={addtocart}>{ispresent(productId)?"remove from cart":"add to cart"}</Button>
-          <Button variant='contained' component={NavLink} to="/reduxp/cart" sx={{width:{xs:"100%",sm:"40%"},display:"block",margin:"16px auto",bgcolor:"orange",textAlign:"center",'&:hover':{
+          <Button variant='contained' component={NavLink} to="/shoppingcart/cart" sx={{width:{xs:"100%",sm:"40%"},display:"block",margin:"16px auto",bgcolor:"orange",textAlign:"center",'&:hover':{
             bgcolor:"orangered"
           }}}>go to Cart</Button>
       </Card>}

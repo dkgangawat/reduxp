@@ -70,7 +70,7 @@ export default function  SearchAppBar () {
           <Stack direction="row" gap="2">
           <IconButton id='searchButton' sx={{borderRadius:"0px" ,display:{xs:"block",sm:"none"}}}  onClick={handleClick}>{<SearchIcon />}</IconButton>
                 <IconButton >
-              <Link to="/reduxp/cart">
+              <Link to="/shoppingcart/cart">
             
              <StyledBadge badgeContent={CartItems} color="secondary">
             <ShoppingCartIcon />

@@ -10,9 +10,9 @@ const App = () => {
     <>
       <Header/>
       <Routes>
-      <Route path="/reduxp/" element={<ProductListing/>}/>
-      <Route path="/reduxp/cart" element={<Cart/>}/>
-      <Route path='/reduxp/cart/productdetail/:productId' element={<ProductDetails/>}/>
+      <Route path="/shoppingcart/" element={<ProductListing/>}/>
+      <Route path="/shoppingcart/cart" element={<Cart/>}/>
+      <Route path='/shoppingcart/cart/productdetail/:productId' element={<ProductDetails/>}/>
       </Routes>  
  
     </>

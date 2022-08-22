@@ -42,7 +42,7 @@ const Mcard = () => {
                        }
                        
                        }} onClick={details}>
-                        <NavLink to={`/reduxp/cart/productdetail/${id}`} style={{textDecoration:"none",display:"inline" ,color:"inherit"}}>
+                        <NavLink to={`/shoppingcart/cart/productdetail/${id}`} style={{textDecoration:"none",display:"inline" ,color:"inherit"}}>
                       
                <Typography>
                     <CardMedia
