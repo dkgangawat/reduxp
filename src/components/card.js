@@ -9,6 +9,7 @@ import {NavLink} from "react-router-dom"
 import { RemoveFromCart } from '../state/action/productAction';
 import { ispresent } from '../state/reducer/AddTOCartReducer';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { green } from '@mui/material/colors';
 var clickedItem =0;
 const Mcard = () => {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const Mcard = () => {
         const {id,title,image,price,category} = product;
         return(  
           <Card key={index} id={index} sx={{ height:"auto" , width:{xs:"50%",sm:"22%",md:"18%"} ,maxWidth: 320 ,display:"inline-block",margin:{sx:"none",sm:"16px auto"},objectFit:"fill" ,
-                      boxShadow:{sx:"none",sm:"0px 1px 45px gray"},
+                      boxShadow:{sx:"none",sm:"0px 1px 4px gray"},
                       transition:"all 0.3s ease",
                       borderRadius:"0px",
                       border:"1px solid #bbbb",
@@ -52,14 +53,20 @@ const Mcard = () => {
                    alt="green iguana"
                    sx={{objectFit:"contain",padding:"5px",height:"100px"}}
                  />  
-                 <Typography component="h5" sx={{fontSize:"0.9rem",margin :"5px",textAlign:'center'}} >
+                 <Typography component="h5" sx={{fontSize:"0.9rem",margin :"5px 0px 5px 16px"}} >
                    {title}<br/>
                    {`${price} $`}<br/>
                    {category}
                  </Typography>
                </Typography>
                </NavLink>
-                 <IconButton id={id} variant='contained' sx={{fontSize:"16px",margin:"10px",textTransform:"capitalize"}} onClick={addtocart}>{ispresent(id)?"remove from cart":<AddShoppingCartIcon/>}</IconButton>
+                 <Button variant="contained" id={id} sx={{fontSize:"12px",
+                 color:"gray",
+                 margin:"10px",
+                 textTransform:"capitalize",
+                 bgcolor:"#bbbb",
+                 borderRadius:"4px",
+                 "&:hover":{bgcolor:"#bbbb"}}} onClick={addtocart}>{ispresent(id)?"remove from cart":"add to cart"}</Button>
              </Card>
             )
     })
