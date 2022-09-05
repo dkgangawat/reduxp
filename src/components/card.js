@@ -12,7 +12,15 @@ var clickedItem =0;
 const Mcard = (props) => {
   const dispatch = useDispatch();
     const products = useSelector((state)=>state.allproducts.products);
+    const cartItems = useSelector((state)=>state.HandleCart.CartArray);
+    const ispresent=(item) =>{
+      return cartItems.find((element)=>{
+      if(parseInt(element.id)===parseInt(item)){
+        return true;
+      }else{return false}
+    })} 
     const addtocart=(event)=>{
+      console.log(ispresent(event.currentTarget.id));
       if(ispresent(event.currentTarget.id)){
         dispatch(RemoveFromCart(event.currentTarget.id));
         const dt = document.getElementById(event.currentTarget.id)

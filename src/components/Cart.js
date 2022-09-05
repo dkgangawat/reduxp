@@ -4,7 +4,7 @@ import React from 'react'
 import { useSelector ,useDispatch } from 'react-redux';
 import { RemoveFromCart } from '../state/action/productAction';
 const Cart = () => {
-    const cartItems = useSelector((state)=>state.HandleCart);
+    const cartItems = useSelector((state)=>state.HandleCart.CartArray);
     const dispatch = useDispatch();
     const removeItem =(event)=>{
       dispatch(RemoveFromCart(event.currentTarget.id));

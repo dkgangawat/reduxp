@@ -6,6 +6,7 @@ import { Home, Person } from '@mui/icons-material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { NavLink } from 'react-router-dom';
 import Filter from './Filter';
+import { Box } from '@mui/system';
 
 export default function BotNav() {
   const [value, setValue] = React.useState('recents');
@@ -19,6 +20,7 @@ export default function BotNav() {
   };
 
   return (
+    <>
     <BottomNavigation sx={{ width: "100%",display:{xs:"flex",sm:"none"} ,bgcolor:"#001E3C",position:"fixed",mt:11,bottom:"0px"}} value={value} onChange={handleChange}>
       <BottomNavigationAction
       component={NavLink} to="/shoppingcart/"
@@ -42,5 +44,7 @@ export default function BotNav() {
       <BottomNavigationAction component={NavLink} to="/shoppingcart/"  sx={{ color:"#E7E9EB"}} onClick={toggleDrawer} value="Menu" icon={<MenuIcon />} />
       <Filter active={active} toggleDrawer={toggleDrawer}/>
     </BottomNavigation>
+    <Box sx={{width:"100vw",mt:11,height:"0px"}}/>
+    </>
   );
 }

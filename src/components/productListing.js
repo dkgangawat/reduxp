@@ -9,6 +9,8 @@ import { Container } from "@mui/system";
 const ProductListing = () => {
   const dispatch = useDispatch()
   const products = useSelector((state)=>state.allproducts.products);
+  // const cartItems = useSelector((state)=>state.HandleCart.CartArray);
+  // console.log(cartItems);
   const fetchData= async()=>{
     const responce = await axios.get(`https://fakestoreapi.com/products`).catch((err)=>{
         console.log("err",err);
@@ -17,7 +19,7 @@ const ProductListing = () => {
 } 
 useEffect(()=>{
   fetchData();
-});
+},[]);
 const renderProductList = products.map((product,index)=>{
   const {id,title,image,price,category} = product;
   return(

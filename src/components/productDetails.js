@@ -4,16 +4,23 @@ import { useDispatch } from 'react-redux/es/exports';
 import { AddToCart } from '../state/action/productAction';
 import {NavLink} from "react-router-dom"
 import { RemoveFromCart } from '../state/action/productAction'; 
-import { ispresent } from '../state/reducer/AddTOCartReducer';
 import { useParams } from 'react-router-dom';
 import  axios  from 'axios';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect,useState } from 'react';
+import { useSelector } from 'react-redux/es/exports';
+
 
 const ProductDetails = () => {
   const [responce ,setResponce]=useState({})
   const {productId} = useParams();
   const dispatch = useDispatch();
+  const cartItems = useSelector((state)=>state.HandleCart.CartArray);
+  const ispresent=(item) =>{
+    return cartItems.find((element)=>{
+    if(parseInt(element.id)===parseInt(item)){
+      return true;
+    }else{return false}
+  })} 
   const fetchData= async()=>{
      const responce= await axios.get(`https://fakestoreapi.com/products/${productId}`).catch((err)=>{
         console.log("err",err);
