@@ -33,9 +33,6 @@ useEffect(()=>{
         {categories.map((text) => (
           <ListItem  key={text} id={text} disablePadding >
             <ListItemButton component={NavLink} to={`/shoppingcart/category/${text}`}>
-              {/* <ListItemIcon>
-                { <MailIcon />}
-              </ListItemIcon> */}
               <ListItemText primary={text} />
             </ListItemButton>
           </ListItem>

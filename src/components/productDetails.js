@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 import  axios  from 'axios';
 import { useEffect,useState } from 'react';
 import { useSelector } from 'react-redux/es/exports';
+import Loading from './loading';
 
 
 const ProductDetails = () => {
@@ -45,7 +46,7 @@ useEffect(()=>{
     const {title,image,price,category,description} = responce;
   return (
     <>
-      {(responce.id===undefined)?"loading":<Card  sx={{ display:"flex",width:"80%", margin:"16px auto", padding:"8px",flexWrap:"wrap",boxShadow:"0 0 0 gray"}}>
+      {(responce.id===undefined)?<Loading/>:<Card  sx={{ display:"flex",width:"80%", margin:"16px auto", padding:"8px",flexWrap:"wrap",boxShadow:"0 0 0 gray"}}>
         <CardMedia component="img" 
         image={image}
          sx={{width:{xs:"100%",sm:"150px"},height:"200px",display:"inline-block",objectFit:"contain"}}/>

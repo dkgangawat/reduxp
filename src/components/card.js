@@ -7,7 +7,6 @@ import { useDispatch } from 'react-redux/es/exports';
 import { AddToCart } from '../state/action/productAction';
 import {NavLink} from "react-router-dom"
 import { RemoveFromCart } from '../state/action/productAction';
-import { ispresent } from '../state/reducer/AddTOCartReducer';
 var clickedItem =0;
 const Mcard = (props) => {
   const dispatch = useDispatch();

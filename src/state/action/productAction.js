@@ -12,6 +12,11 @@ import { ActionType } from "../contants/action_type";
   payload: items
  }
 }
+const RemoveAll=()=>{
+ return{
+  type:ActionType.REMOVE_ALL,
+ }
+}
  const RemoveFromCart=(items)=>{
   return{
    type:ActionType.REMOVE_FROM_CART,
@@ -31,4 +36,4 @@ import { ActionType } from "../contants/action_type";
   }
 
  }
-export {SetProduct,AddToCart,RemoveFromCart,SelectedProduct,TotalProducts }
+export {SetProduct,AddToCart,RemoveFromCart,SelectedProduct,TotalProducts,RemoveAll }

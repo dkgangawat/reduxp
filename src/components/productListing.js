@@ -5,6 +5,7 @@ import { useDispatch,useSelector } from "react-redux"
 import Card from "./card"
 import { SetProduct  } from './../state/action/productAction';
 import { Container } from "@mui/system";
+import Loading from "./loading"
 
 const ProductListing = () => {
   const dispatch = useDispatch()
@@ -26,13 +27,15 @@ const renderProductList = products.map((product,index)=>{
     <Card key={index} id={id} title={title} image={image} price={price} category={category}/>
   )
 })
-
   return (
     <>
-    <Container sx={{display:"flex",flexWrap:"wrap",marginTop:"16px",mb:10,mt:9}}>
+    {
+      (products.length===0)?<Loading/>:   <Container sx={{display:"flex",flexWrap:"wrap",marginTop:"16px",mb:10,mt:9}}>
       <h3 style={{paddingBottom:'8px', display:"block",width:"100%"}}>Add some items to cart</h3>
       {renderProductList}
     </Container>
+    }
+ 
     </>
   )
 }
