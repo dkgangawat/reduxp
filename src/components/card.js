@@ -7,19 +7,22 @@ import { useDispatch } from 'react-redux/es/exports';
 import { AddToCart } from '../state/action/productAction';
 import {NavLink} from "react-router-dom"
 import { RemoveFromCart } from '../state/action/productAction';
+import axios from 'axios';
 var clickedItem =0;
 const Mcard = (props) => {
   const dispatch = useDispatch();
-    const products = useSelector((state)=>state.allproducts.products);
+    // const cartItems = useSelector((state)=>state.HandleCart.CartArray);
     const cartItems = useSelector((state)=>state.HandleCart.CartArray);
+
     const ispresent=(item) =>{
-      return cartItems.find((element)=>{
-      if(parseInt(element.id)===parseInt(item)){
-        return true;
-      }else{return false}
-    })} 
-    const addtocart=(event)=>{
-      console.log(ispresent(event.currentTarget.id));
+      return(
+        cartItems.find((element)=>{
+      return (parseInt(element.id)===parseInt(item))
+    })
+      ) } 
+    // const ispresent=useSelector((state)=>state.HandleCart.ispresent)
+    const addtocart=async (event)=>{
+      // console.log("adding to cart")
       if(ispresent(event.currentTarget.id)){
         dispatch(RemoveFromCart(event.currentTarget.id));
         const dt = document.getElementById(event.currentTarget.id)
@@ -27,11 +30,14 @@ const Mcard = (props) => {
       }else{
         const dt = document.getElementById(event.currentTarget.id)
         dt.innerHTML="remove from cart"
-         dispatch(AddToCart(products[event.currentTarget.id-1]));
+        const responce = await axios.get(`https://fakestoreapi.com/products/${event.currentTarget.id}`).catch((err)=>{
+      console.log(err);
+    })
+         dispatch(AddToCart(responce.data));
       }
      }
   return (
-    <Card  id={props.index} sx={{ height:"auto" , width:{xs:"50%",sm:"22%",md:"18%"} ,maxWidth: 320 ,display:"inline-block",margin:{sx:"none",sm:"16px auto"},objectFit:"fill" ,
+    <Card   sx={{ height:"auto" , width:{xs:"50%",sm:"22%",md:"18%"} ,maxWidth: 320 ,display:"inline-block",margin:{sx:"none",sm:"16px auto"},objectFit:"fill" ,
     boxShadow:{sx:"none",sm:"0px 1px 4px gray"},
     transition:"all 0.3s ease",
     borderRadius:"0px",

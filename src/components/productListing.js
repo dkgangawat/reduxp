@@ -3,7 +3,7 @@ import axios from "axios"
 import { useEffect } from "react"
 import { useDispatch,useSelector } from "react-redux"
 import Card from "./card"
-import { SetProduct  } from './../state/action/productAction';
+import { RemoveAll, SetProduct  } from './../state/action/productAction';
 import { Container } from "@mui/system";
 import Loading from "./loading"
 
@@ -11,15 +11,23 @@ const ProductListing = () => {
   const dispatch = useDispatch()
   const products = useSelector((state)=>state.allproducts.products);
   // const cartItems = useSelector((state)=>state.HandleCart.CartArray);
-  // console.log(cartItems);
+  // console.log(cartItems); 
+    const cancleToken = axios.CancelToken.source()
   const fetchData= async()=>{
-    const responce = await axios.get(`https://fakestoreapi.com/products`).catch((err)=>{
+ 
+     axios.get(`https://fakestoreapi.com/products`,{cancleToken:cancleToken.token}).then(
+       (responce)=>{ dispatch(SetProduct(responce.data))}
+    ).catch((err)=>{
         console.log("err",err);
     })
-    dispatch(SetProduct(responce.data))
+  
 } 
 useEffect(()=>{
   fetchData();
+  return ()=>{
+    cancleToken.cancel();
+    dispatch(RemoveAll())
+  }
 },[]);
 const renderProductList = products.map((product,index)=>{
   const {id,title,image,price,category} = product;

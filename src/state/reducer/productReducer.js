@@ -1,7 +1,8 @@
 
 import { ActionType } from '../contants/action_type';
 const initialState = {
-    products: []
+    products: [],
+    totalp:""
 }
 export const productReducer = (state= initialState,{type,payload}) => {
     switch (type) {

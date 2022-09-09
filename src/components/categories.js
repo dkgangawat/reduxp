@@ -10,17 +10,26 @@ const Categories = () => {
   const dispatch = useDispatch()
   const products = useSelector((state)=>state.allproducts.products);
     const {category} = useParams()
+    const cancleToken = axios.CancelToken.source()
+
     const fetchData= async()=>{
-      const responce= await axios.get(`https://fakestoreapi.com/products/category/${category}`).catch((err)=>{
+      const responce= await axios.get(`https://fakestoreapi.com/products/category/${category}`,{cancleToken:cancleToken.token}).catch((err)=>{
          console.log("err",err);
-     })
+     }).catch(
+      (err)=>{
+        if(axios.isCancel(err)){
+          console.log("cancled")
+        }
+      }
+     )
      dispatch(SetProduct(responce.data))
   }
   useEffect(()=>{
     fetchData()
-    if(products.length>0){
-      dispatch(RemoveAll());
-    }
+  return ()=>{
+    dispatch(RemoveAll())
+    cancleToken.cancel();
+  }
    },[category])
    const renderProductList = products.map((categoryItem,index)=>{
     const {id,title,image,price,category} = categoryItem;

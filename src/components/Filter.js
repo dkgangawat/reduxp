@@ -13,6 +13,7 @@ import { NavLink } from 'react-router-dom';
 
 export default  function Filter(props) {
   const [categories ,setCategories]=useState([])
+  // const cancleToken = axios.CancelToken.source()
   const fetchData= async()=>{
     const responce= await axios.get(`https://fakestoreapi.com/products/categories`).catch((err)=>{
        console.log("err",err);

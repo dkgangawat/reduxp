@@ -1,7 +1,6 @@
-
 import { ActionType } from "../contants/action_type"
 const initialState ={
-  CartArray:[],
+  CartArray: [],
   TotalItems:0,
 }
 const AddTOCartReducer = (state = initialState,{type,payload}) => {
