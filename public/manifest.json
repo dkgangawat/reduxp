@@ -1,5 +1,5 @@
 {
-  "short_name": "Shopping Cart",
+  "short_name": "Cart",
   "name": "Shopping Cart",
   "icons": [
     {
@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "favicon.ico",
+      "src": "logo192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "favicon.ico",
+      "src": "logo512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
