@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.2c03d9bc.css","mappings":"AAAA,EAGI,qBAAsB,CAFtB,QAAS,CACT,SAGJ,CACA,KACI,0BACJ","sources":["App.css"],"sourcesContent":["*{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    /* color: #d5d4ff61; */\r\n}\r\nbody{\r\n    background-color: #d5d4ff18;\r\n}"],"names":[],"sourceRoot":""}
