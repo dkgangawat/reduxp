@@ -38,7 +38,7 @@ const Mcard = (props) => {
      }
   return (
     <Card   sx={{ height:"auto" , width:{xs:"50%",sm:"22%",md:"18%"} ,maxWidth: 320 ,display:"inline-block",margin:{sx:"none",sm:"16px auto"},objectFit:"fill" ,
-    boxShadow:{sx:"none",sm:"0px 1px 4px gray"},
+    boxShadow:{xs:"none",sm:"0px 1px 4px gray"},
     transition:"all 0.3s ease",
     borderRadius:"0px",
     border:"1px solid #bbbb",
@@ -46,7 +46,7 @@ const Mcard = (props) => {
       position:"relative",
       transform:{sx:"scale(1)",sm:"scale(1.1)"},
       backgroundColor:"white",
-      boxShadow:"-2px -2px 8px gray",
+      boxShadow:{xs:"none",sm:"-2px -2px 8px gray"},
      }
      
      }}>
@@ -60,7 +60,7 @@ const Mcard = (props) => {
  sx={{objectFit:"contain",padding:"5px",height:"100px"}}
 />  
 <Typography component="h5" sx={{fontSize:"0.9rem",margin :"5px 0px 5px 16px"}} >
- {props.title}<br/>
+ {props.title.substring(0,20)}<br/>
  {`${props.price} $`}<br/>
  {props.category}
 </Typography>

@@ -7,6 +7,8 @@ import Cart from './components/Cart';
 import ProductDetails from './components/productDetails';
 import Categories from './components/categories';
 import BotNav from './components/BotNav';
+import Login from './components/Login';
+import { SignUp } from './components/Login';
 const App = () => {
   return (
     <>
@@ -16,6 +18,8 @@ const App = () => {
       <Route path="/shoppingcart/cart" element={<Cart/>}/>
       <Route path='/shoppingcart/cart/productdetail/:productId' element={<ProductDetails/>}/>
       <Route path='/shoppingcart/category/:category' element={<Categories/>}/>
+      <Route path='/shoppingcart/login' element={<Login/>}/>
+      <Route path='/shoppingcart/signup' element={<SignUp/>}/>
       </Routes>  
       <BotNav/>
  

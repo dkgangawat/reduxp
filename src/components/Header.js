@@ -47,25 +47,24 @@ export default function  SearchAppBar () {
    const CartItems = useSelector((state)=>state.HandleCart.CartArray.length);
   return (
     <><Box  sx={{ flexGrow: 1 ,position:"fixed",width:"100%" ,top:"0",zIndex:"2"}}>
-      <AppBar position="static" sx={{bgcolor:"#001E3C" , boxShadow:"0px 0.5px 4px gray",color:"black"}}>
+      <AppBar position="static" sx={{bgcolor:"white", boxShadow:"0px 0.5px 4px gray"}}>
         <Toolbar>
           <IconButton
             size="large"
             edge="start"
-            color="inherit"
             aria-label="open drawer"
             sx={{ mr: 2,color:"#E7E9EB" }}
             onClick={toggleDrawer}
           >
             <Filter active={active} toggleDrawer={toggleDrawer}/>
-            <MenuIcon />
+            <MenuIcon sx={{color:"black"}} />
           </IconButton>
           <Typography
             variant="h5"
             noWrap
             component={NavLink}
             to="/shoppingcart"
-            sx={{ textDecoration:"none", flexGrow: 1, display: "block",color:"#E7E9EB"  }}
+            sx={{ textDecoration:"none", flexGrow: 1,color:"black", display: "block",fontWeight:'550'}}
           >Shop Now
           </Typography>
           {/* <Box id="searchBox" onBlur={handleBlur} sx={{ bgcolor:"rgba(229, 223, 223, 0.374)", boxShadow:"0 1px #bbbb", display:{xs:"none",sm:"block"}}}>
@@ -87,6 +86,8 @@ export default function  SearchAppBar () {
              </IconButton>
           <IconButton>
           <Avatar
+          component={NavLink}
+          to="shoppingcart/login"
         src="/broken-image.jpg"
         sx={{transform:"scale(0.8)",display:{xs:"none",sm:"inherit"}}}
         >

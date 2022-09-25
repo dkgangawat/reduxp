@@ -21,27 +21,24 @@ export default function BotNav() {
 
   return (
     <>
-    <BottomNavigation sx={{ width: "100%",display:{xs:"flex",sm:"none"} ,bgcolor:"#001E3C",position:"fixed",mt:11,bottom:"0px"}} value={value} onChange={handleChange}>
+    <BottomNavigation sx={{ width: "100%",display:{xs:"flex",sm:"none"} ,bgcolor:"#E7E9EB",position:"fixed",mt:11,bottom:"0px"}} value={value} onChange={handleChange}>
       <BottomNavigationAction
       component={NavLink} to="/shoppingcart/"
         value="recents"
         icon={<Home />}
-        sx={{ color:"#E7E9EB"}}
        
       />
       <BottomNavigationAction
       component={NavLink} to="/shoppingcart/"
         value="favorites"
         icon={<FavoriteIcon />}
-        sx={{ color:"#E7E9EB"}}
       />
       <BottomNavigationAction
       component={NavLink} to="/shoppingcart/"
         value="nearby"
         icon={<Person/>}
-        sx={{ color:"#E7E9EB"}}
       />
-      <BottomNavigationAction component={NavLink} to="/shoppingcart/"  sx={{ color:"#E7E9EB"}} onClick={toggleDrawer} value="Menu" icon={<MenuIcon />} />
+      <BottomNavigationAction component={NavLink} to="/shoppingcart/" onClick={toggleDrawer} value="Menu" icon={<MenuIcon />} />
       <Filter active={active} toggleDrawer={toggleDrawer}/>
     </BottomNavigation>
     <Box sx={{width:"100vw",mt:11,height:"0px"}}/>
