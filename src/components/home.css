@@ -1,0 +1,19 @@
+.home{
+    width: 90%;
+    margin: auto;
+}
+.home-ctg{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.ctg{
+    width: 80px;
+}
+.ctg img{
+    width: 80px;
+}
+.ctg p{
+ text-align: center;
+ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

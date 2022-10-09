@@ -1,78 +1,73 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
-import { Button, Typography, CardActionArea } from '@mui/material';
+import { Button, Typography, CardActionArea, IconButton } from '@mui/material';
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux/es/exports';
-import { AddToCart } from '../state/action/productAction';
+import { AddToFav, RemoveFromFav } from '../state/action/productAction';
 import {NavLink} from "react-router-dom"
-import { RemoveFromCart } from '../state/action/productAction';
 import axios from 'axios';
+import  FavoriteIcon  from '@mui/icons-material/Favorite';
 var clickedItem =0;
 const Mcard = (props) => {
   const dispatch = useDispatch();
     // const cartItems = useSelector((state)=>state.HandleCart.CartArray);
-    const cartItems = useSelector((state)=>state.HandleCart.CartArray);
+    const favItems = useSelector((state)=>state.HandleCart.FavArray);
 
     const ispresent=(item) =>{
       return(
-        cartItems.find((element)=>{
+        favItems.find((element)=>{
       return (parseInt(element.id)===parseInt(item))
     })
       ) } 
     // const ispresent=useSelector((state)=>state.HandleCart.ispresent)
-    const addtocart=async (event)=>{
+    const addToFav=async (event)=>{
       // console.log("adding to cart")
       if(ispresent(event.currentTarget.id)){
-        dispatch(RemoveFromCart(event.currentTarget.id));
-        const dt = document.getElementById(event.currentTarget.id)
-        dt.innerHTML="add to cart"
+        dispatch(RemoveFromFav(event.currentTarget.id));
+        const dt = document.getElementById(`${event.currentTarget.id}svg`)
+        dt.style.color="#bbbb"
       }else{
-        const dt = document.getElementById(event.currentTarget.id)
-        dt.innerHTML="remove from cart"
+        const dt = document.getElementById(`${event.currentTarget.id}svg`)
+        dt.style.color= "red"
         const responce = await axios.get(`https://fakestoreapi.com/products/${event.currentTarget.id}`).catch((err)=>{
       console.log(err);
     })
-         dispatch(AddToCart(responce.data));
+         dispatch(AddToFav(responce.data));
       }
      }
   return (
-    <Card   sx={{ height:"auto" , width:{xs:"50%",sm:"22%",md:"18%"} ,maxWidth: 320 ,display:"inline-block",margin:{sx:"none",sm:"16px auto"},objectFit:"fill" ,
-    boxShadow:{xs:"none",sm:"0px 1px 4px gray"},
+    <Card sx={{ height:"auto" , width:{xs:"50%",sm:"22%",md:"18%"} ,maxWidth: 320,minHeight:"250px",margin:{xs:"none",sm:"4px auto"},
+    // boxShadow:{xs:"none",sm:"0px 1px 4px gray"},
+    padding:"4px",
+    position:"relative",
     transition:"all 0.3s ease",
     borderRadius:"0px",
+    textDecoration:"none",
     border:"1px solid #bbbb",
     "&:hover":{
       position:"relative",
-      transform:{sx:"scale(1)",sm:"scale(1.1)"},
+      transform:{sx:"scale(1)",sm:"scale(1.05)"},
       backgroundColor:"white",
-      boxShadow:{xs:"none",sm:"-2px -2px 8px gray"},
+      // boxShadow:{xs:"none",sm:"-2px -2px 8px gray"},
      }
-     
      }}>
-      <NavLink to={`/shoppingcart/cart/productdetail/${props.id}`} style={{textDecoration:"none",display:"inline" ,color:"inherit"}}>
-    
-<CardActionArea>
+      <NavLink to={`/shoppingcart/cart/productdetail/${props.id}`} style={{ textDecoration:"none",}}>
   <CardMedia
  component="img"
  image={props.image}
  alt="green iguana"
  sx={{objectFit:"contain",padding:"5px",height:"100px"}}
 />  
-<Typography component="h5" sx={{fontSize:"0.9rem",margin :"5px 0px 5px 16px"}} >
- {props.title.substring(0,20)}<br/>
- {`${props.price} $`}<br/>
- {props.category}
-</Typography>
-</CardActionArea>
-</NavLink>
-<Button variant="contained" id={props.id} sx={{fontSize:"12px",
-color:"gray",
-margin:"10px",
-textTransform:"capitalize",
-bgcolor:"#bbbb",
-borderRadius:"4px",
-"&:hover":{bgcolor:"#bbbb"}}} onClick={addtocart}>{ispresent(props.id)?"remove from cart":"add to cart"}</Button>
+<Typography component="h5" sx={{fontSize:"0.9rem",fontWeight:"600",color:"#0F1111",margin :"5px 0px 5px 16px"}} >
+ {props.title.substring(0,50)}</Typography>
+ <Typography component="h5" sx={{fontSize:"0.9rem",color:"green",fontWeight:"600",margin :"5px 0px 5px 16px"}} >
+ {`${props.price} ₹ `}</Typography>
+ <Typography component="h5" sx={{fontSize:"0.9rem",color:"#bbbb",fontWeight:"600",margin :"5px 0px 5px 16px"}} >
+ {props.category}</Typography>
+ </NavLink>
+<IconButton id={props.id} onClick={addToFav} sx={{boxShadow:"0 0 4px #bbbb",position:"absolute",top:"8px",right:"8px"}}>{ispresent(props.is)?<FavoriteIcon id={`${props.id}svg`} sx={{color:"red",fontSize:"18px"}}/>:<FavoriteIcon id={`${props.id}svg`} sx={{color:"#bbbb",fontSize:"18px"}}/>}</IconButton>
+
 </Card>
   )
 }

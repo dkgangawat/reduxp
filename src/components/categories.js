@@ -41,7 +41,7 @@ const Categories = () => {
     <>
     {
       (products.length===0)?<Loading/>:
-       <Container sx={{display:"flex",flexWrap:"wrap",marginTop:"16px"}}>
+       <Container sx={{display:"flex",padding:"0",flexWrap:"wrap",marginTop:"16px"}}>
       <h3 style={{paddingBottom:'8px', display:"block",width:"100%"}}>Add some items to cart</h3>
       {renderProductList}
     </Container>

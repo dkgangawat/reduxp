@@ -36,4 +36,16 @@ const RemoveAll=()=>{
   }
 
  }
-export {SetProduct,AddToCart,RemoveFromCart,SelectedProduct,TotalProducts,RemoveAll }
+ const AddToFav=(items)=>{
+  return{
+   type:ActionType.ADD_TO_FAV,
+   payload: items
+  }
+ }
+ const RemoveFromFav=(items)=>{
+  return{
+   type:ActionType.REMOVE_FROM_FAV,
+   payload: items
+  }
+ }
+export {SetProduct,AddToCart,RemoveFromCart,SelectedProduct,TotalProducts,RemoveAll,AddToFav ,RemoveFromFav}

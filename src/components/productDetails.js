@@ -9,6 +9,8 @@ import  axios  from 'axios';
 import { useEffect,useState } from 'react';
 import { useSelector } from 'react-redux/es/exports';
 import Loading from './loading';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import  IconButton  from '@mui/material/IconButton';
 
 
 const ProductDetails = () => {
@@ -37,6 +39,8 @@ useEffect(()=>{
       dispatch(RemoveFromCart(productId));
       const dt = document.getElementById(productId)
       dt.innerHTML="add to cart"
+
+
     }else{
       const dt = document.getElementById(productId)
       dt.innerHTML="remove from cart"
@@ -46,10 +50,12 @@ useEffect(()=>{
     const {title,image,price,category,description} = responce;
   return (
     <>
-      {(responce.id===undefined)?<Loading/>:<Card  sx={{ display:"flex",width:"80%", margin:"16px auto", padding:"8px",flexWrap:"wrap",boxShadow:"0 0 0 gray"}}>
+      {(responce.id===undefined)?<Loading/>:<Card  sx={{ display:"flex",position:"relative",width:"80%", margin:"16px auto", padding:"8px",flexWrap:"wrap",boxShadow:"0 0 0 gray"}}>
+      <IconButton sx={{boxShadow:"0 0 4px #bbbb",position:"absolute",right:"8px",height:"30px", width:"30px",margin:"5px"}}><FavoriteIcon sx={{color:"#bbbb",zIndex:2,fontSize:"16px"}}/></IconButton>
         <CardMedia component="img" 
         image={image}
          sx={{width:{xs:"100%",sm:"150px"},height:"200px",display:"inline-block",objectFit:"contain"}}/>
+        
          <CardActionArea sx={{margin:'12px',padding:"5px",width:{xs:"100%",sm:"auto"}}}>
         <Typography variant='h5' sx={{fontWeight:"bold"}}>{title}</Typography>
         <Typography  sx={{fontWeight:"bold",color:"green"}}> ${price}</Typography>

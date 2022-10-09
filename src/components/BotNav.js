@@ -29,19 +29,19 @@ export default function BotNav() {
        
       />
       <BottomNavigationAction
-      component={NavLink} to="/shoppingcart/"
+      component={NavLink} to="/shoppingcart/wishlist"
         value="favorites"
         icon={<FavoriteIcon />}
       />
       <BottomNavigationAction
-      component={NavLink} to="/shoppingcart/"
+      component={NavLink} to="/shoppingcart/login"
         value="nearby"
         icon={<Person/>}
       />
-      <BottomNavigationAction component={NavLink} to="/shoppingcart/" onClick={toggleDrawer} value="Menu" icon={<MenuIcon />} />
+      <BottomNavigationAction  onClick={toggleDrawer} value="Menu" icon={<MenuIcon />} />
       <Filter active={active} toggleDrawer={toggleDrawer}/>
     </BottomNavigation>
-    <Box sx={{width:"100vw",mt:11,height:"0px"}}/>
+    <Box sx={{width:"100vw",mt:9,height:"0px"}}/>
     </>
   );
 }
